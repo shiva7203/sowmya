@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day Sowmya ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 { font-size: 2.8rem; }
+
+.heart {
+  font-size: 3rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 25px;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.quote {
+  font-style: italic;
+  margin: 15px 0;
+}
+
+.distance {
+  margin-top: 25px;
+  font-size: 1.1rem;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.gallery img {
+  width: 240px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: float 4s ease-in-out infinite;
+}
+
+.gallery img:nth-child(2) { animation-delay: 1s; }
+.gallery img:nth-child(3) { animation-delay: 2s; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.rose {
+  position: fixed;
+  top: -40px;
+  font-size: 24px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <div class="heart">🌹❤️🌹</div>
+
+  <h1>Happy Rose Day</h1>
+  <h2>My Love, Sowmya</h2>
+
+  <div class="card">
+    <p>
+      Even though miles stand between us,  
+      my heart has never been closer to yours. 🌍❤️
+    </p>
+
+    <p class="quote">
+      “Distance means so little when someone means so much.”
+    </p>
+
+    <p class="quote">
+      “No matter where we are, my love always finds its way to you.”
+    </p>
+
+    <p class="quote">
+      “Every rose I see makes me think of the day I’ll give one to you in person.”
+    </p>
+
+    <div class="distance">
+      🇺🇸 <strong>United States</strong> &nbsp;➡️&nbsp; 🇮🇳 <strong>India</strong><br>
+      Same love. Same hearts. Same future.
+    </div>
+  </div>
+
+  <h2>Our Moments ❤️</h2>
+
+  <div class="gallery">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
+  </div>
+
+  <p style="margin-top:50px;">
+    Until the distance turns into a hug 🤍
+  </p>
+
+</div>
+
+<script>
+function dropRose() {
+  const r = document.createElement("div");
+  r.className = "rose";
+  r.innerText = "🌹";
+  r.style.left = Math.random() * 100 + "vw";
+  r.style.animationDuration = (3 + Math.random() * 4) + "s";
+  document.body.appendChild(r);
+  setTimeout(() => r.remove(), 7000);
+}
+setInterval(dropRose, 400);
+</script>
+
+</body>
+</html>
