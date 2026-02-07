@@ -2,150 +2,274 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy Rose Day Sowmya ❤️</title>
+<title>For Sowmya ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
-  color: white;
-  text-align: center;
-  overflow-x: hidden;
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(to bottom,#ffdde1,#ee9ca7);
+  color:white;
+  text-align:center;
+  overflow-x:hidden;
 }
 
-.container {
-  padding: 50px 20px;
-  max-width: 900px;
-  margin: auto;
+/* Screens */
+.screen{
+  display:none;
+  min-height:100vh;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  padding:20px;
+}
+.screen.active{display:flex}
+
+/* Card */
+.card{
+  background:rgba(255,255,255,0.2);
+  padding:25px;
+  border-radius:20px;
+  max-width:420px;
 }
 
-h1 { font-size: 2.8rem; }
+/* Inputs & buttons */
+input{
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  width:90%;
+  margin-top:15px;
+  font-size:1rem;
+  text-align:center;
+}
+button{
+  background:#ff6f91;
+  border:none;
+  color:white;
+  padding:14px 26px;
+  font-size:1.05rem;
+  border-radius:30px;
+  cursor:pointer;
+  margin-top:20px;
+}
+button:hover{background:#ff4f7b}
 
-.heart {
-  font-size: 3rem;
-  animation: pulse 1.5s infinite;
+.error{
+  margin-top:10px;
+  font-size:0.9rem;
+  color:#ffd1dc;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+/* Gallery */
+.gallery{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.gallery img{
+  width:220px;
+  border-radius:20px;
+  animation:float 4s ease-in-out infinite;
+}
+.gallery img:nth-child(2){animation-delay:1s}
+.gallery img:nth-child(3){animation-delay:2s}
+
+@keyframes float{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+  100%{transform:translateY(0)}
 }
 
-.card {
-  background: rgba(255,255,255,0.2);
-  padding: 25px;
-  border-radius: 20px;
-  margin-top: 30px;
+/* Hearts */
+.heart{
+  position:fixed;
+  top:-30px;
+  font-size:22px;
+  animation:fall linear infinite;
 }
 
-.quote {
-  font-style: italic;
-  margin: 15px 0;
+/* Teddy */
+.teddy{
+  position:fixed;
+  bottom:-150px;
+  width:120px;
+  animation:rise 8s ease-in-out infinite;
 }
 
-.distance {
-  margin-top: 25px;
-  font-size: 1.1rem;
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
 }
-
-.gallery {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
-.gallery img {
-  width: 240px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  animation: float 4s ease-in-out infinite;
-}
-
-.gallery img:nth-child(2) { animation-delay: 1s; }
-.gallery img:nth-child(3) { animation-delay: 2s; }
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0); }
-}
-
-.rose {
-  position: fixed;
-  top: -40px;
-  font-size: 24px;
-  animation: fall linear infinite;
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
+@keyframes rise{
+  0%{bottom:-150px;opacity:0}
+  30%{opacity:1}
+  100%{bottom:110vh;opacity:0}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-  <div class="heart">🌹❤️🌹</div>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-  <h1>Happy Rose Day</h1>
-  <h2> Sowmya Algol</h2>
+<!-- SCREEN 0 -->
+<div class="screen active" id="screen0">
+  <h1>🌹 For You, Sowmya 🌹</h1>
+  <p>Answer honestly… only then you may enter ❤️</p>
+  <button onclick="goTo(1)">Click Here to Enter</button>
+</div>
 
+<!-- Q1 -->
+<div class="screen" id="screen1">
   <div class="card">
-    <p>
-      Even though miles stand between us,  
-      my heart has never been closer to yours. 🌍❤️
-    </p>
+    <h2>Question 1 💕</h2>
+    <p>What is my favorite colour?</p>
+    <input id="a1">
+    <button onclick="check(1)">Submit</button>
+    <div class="error" id="e1"></div>
+  </div>
+</div>
 
-    <p class="quote">
-      “Distance means so little when someone means so much.”
-    </p>
+<!-- Q2 -->
+<div class="screen" id="screen2">
+  <div class="card">
+    <h2>Question 2 🌍</h2>
+    <p>When was the last time we had a fight?</p>
+    <input id="a2">
+    <button onclick="check(2)">Submit</button>
+    <div class="error" id="e2"></div>
+  </div>
+</div>
 
-    <p class="quote">
-      “No matter where we are, my love always finds its way to you.”
-    </p>
+<!-- Q3 -->
+<div class="screen" id="screen3">
+  <div class="card">
+    <h2>Question 3 ❤️</h2>
+    <p>Who owns my hoodies and my heart?</p>
+    <input id="a3">
+    <button onclick="check(3)">Submit</button>
+    <div class="error" id="e3"></div>
+  </div>
+</div>
 
-    <p class="quote">
-      “Every rose I see makes me think of the day I’ll give one to you in person.”
-    </p>
-
-    <div class="distance">
-      Same love. Same hearts. Same future.
-    </div>
-  
-
-  <h2>Our Moments ❤️</h2>
+<!-- FINAL PAGE (NO MUSIC) -->
+<div class="screen" id="screen4">
+  <h1>Happy Rose Day 🌹</h1>
+  <h2>My Love, Sowmya ❤️</h2>
 
   <div class="gallery">
-    <img src="photo1.jpg" alt="Memory 1">
-    <img src="photo2.jpg" alt="Memory 2">
-    <img src="photo3.jpg" alt="Memory 3">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
   </div>
 
-  <p style="margin-top:50px;">
-    Until the distance turns into a hug 🤍
-  </p>
+  <button onclick="showFinalQuestion()">Click here 💖</button>
 
+  <div id="finalQuestion" style="display:none;">
+    <div class="card">
+      <h3>One Last Question 💕</h3>
+      <p>Enter your Mom's Ph number?</p>
+      <input id="a4">
+      <button onclick="checkFinal()">Submit</button>
+      <div class="error" id="e4"></div>
+    </div>
+  </div>
+
+  <p id="finalText"></p>
 </div>
 
 <script>
-function dropRose() {
-  const r = document.createElement("div");
-  r.className = "rose";
-  r.innerText = "🌹";
-  r.style.left = Math.random() * 100 + "vw";
-  r.style.animationDuration = (3 + Math.random() * 4) + "s";
-  document.body.appendChild(r);
-  setTimeout(() => r.remove(), 7000);
+function goTo(n){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById("screen"+n).classList.add("active");
 }
-setInterval(dropRose, 400);
+
+/* Answers */
+const answers={
+  1:["black","green"],
+  2:["december"],
+  3:["me"]
+};
+
+function check(q){
+  const v=document.getElementById("a"+q).value.toLowerCase().trim();
+  const e=document.getElementById("e"+q);
+  if(answers[q].includes(v)){
+    goTo(q+1);
+  }else{
+    e.innerText="Try again ❤️";
+  }
+}
+
+/* Show final question */
+function showFinalQuestion(){
+  document.getElementById("finalQuestion").style.display="block";
+}
+
+/* Check final answer */
+function checkFinal(){
+  const v=document.getElementById("a4").value.toLowerCase();
+  if(v.includes("9440191300")||v.includes("boyfriend")||v.includes("yours")){
+    startFinal();
+  }else{
+    document.getElementById("e4").innerText="Think from your heart ❤️";
+  }
+}
+
+/* FINAL EFFECTS */
+function startFinal(){
+  const music=document.getElementById("bgMusic");
+  music.volume=0.5;
+  music.play();
+  showText();
+  setInterval(createHeart,300);
+  setInterval(createTeddy,2500);
+}
+
+/* Typing text */
+const lines=[
+  "Across oceans and miles…",
+  "my heart always finds you ❤️",
+  "You are my today and all my tomorrows 🌹"
+];
+let i=0;
+function showText(){
+  const el=document.getElementById("finalText");
+  el.innerHTML="";
+  i=0;
+  function type(){
+    if(i<lines.length){
+      el.innerHTML+=lines[i]+"<br>";
+      i++;
+      setTimeout(type,1500);
+    }
+  }
+  type();
+}
+
+/* Hearts */
+function createHeart(){
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText="💖";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=(3+Math.random()*3)+"s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+}
+
+/* Teddy */
+function createTeddy(){
+  const t=document.createElement("img");
+  t.src=Math.random()>0.5?"teddy1.jpg":"teddy2.jpg";
+  t.className="teddy";
+  t.style.left=Math.random()*80+"vw";
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),9000);
+}
 </script>
 
 </body>
